@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <!-- SocketIO JS -->
+  <script defer src="https://chatappsocket99.herokuapp.com/socket.io/socket.io.js"></script>
+  <script defer src="JS/client.js"></script>
+</head>
+<style>
+  h3{
+    font-family: system-ui;
+    font-weight: bold;
+    color: #00000096;
+  }
+  .sendBtn {
+    position: absolute;
+    z-index: 2;
+    top: 11px;
+    right: 0px;
+    outline: none;
+    border: none;
+    background: none;
+    transition: all 0.5s;
+  }
+  .sendBtn:hover{
+    width: 50px;
+    border: none;
+  }
+  #msg{
+    background: rgba(255, 255, 255, 0.393);
+    box-shadow: -10px 2px 34px 0px rgb(255 255 255 / 60%);
+    backdrop-filter: blur( 7.5px );
+    -webkit-backdrop-filter: blur( 7.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+  }
+  .left {
+    float: left;
+    clear: both;
+  }
+
+  .right {
+    float: right;
+    clear: both;
+  }
+
+  .middle {
+    clear: both;
+    margin: auto;
+  }
+
+  .message {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.65);
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 7.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  }
+
+  .message:hover {
+    box-shadow: 5px 10px 18px #888888;
+  }
+
+  #messageContainer{
+    background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 7.5px );
+-webkit-backdrop-filter: blur( 7.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  }
+
+  .glassCard{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7.5px );
+    -webkit-backdrop-filter: blur( 7.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 14px;
+  }
+  .circle{
+    position: absolute;
+    border-radius: 50%;
+    width: 14rem;
+    height: 14rem;
+    background: linear-gradient(to right bottom, rgb(255 255 255) , rgba(255, 255, 255, 0.351));
+    top: 15px;
+    left: -37px;
+    box-shadow: white;
+    box-shadow: 14px 20px 79px 3px #ffffff;
+}
+
+.circle-2{
+  position: absolute;
+  border-radius: 50%;
+  width: 20rem;
+  height: 20rem;
+  background: linear-gradient(to right bottom, rgb(255 255 255) , rgba(255, 255, 255, 0.351));
+  bottom: 0;
+  right: -120px;
+  box-shadow: white;
+  box-shadow: 14px 20px 79px 3px #ffffff
+}
+
+.circle-3{
+  
+  position: absolute;
+  border-radius: 50%;
+  width: 14rem;
+  height: 14rem;
+  background: linear-gradient(to right bottom, rgb(255 255 255) , rgba(255, 255, 255, 0.351));
+  bottom: 20%;
+  left: 3%;
+  box-shadow: white;
+  box-shadow: -4px -20px 79px 20px #ffffff;
+}
+</style>
+
+<body style="background-color: #0fad958a;background: linear-gradient(to right top, #db00ff8f, #41ffe2) cover no-repeat;">
+  <div class="container " style="position: relative;">
+    <!-- <div class="circle-3"></div> -->
+    <div class="circle-2"></div>
+    <div class="circle"></div>
+
+    <div class="logo d-flex flex-row justify-content-center">
+      <img src="images/chatapp.png" style="width: auto; height: 80px; max-width: 80px;" alt="Chat-APP-Icon">
+    </div>
+   
+    <div id="messageContainer" class="container my-3 alert alert-dark"
+      style="max-height: 100%;overflow-x: hidden;overflow-y: scroll;  width: 100%; height: 600px;">
+      <h3 class="text-center glassCard">Anonymous Chat App
+        <hr> Created BY Nikitha
+      </h3>  
+    </div>
+
+    <div class="container">
+      <form id="sendForm" style="position: relative">
+        <div class="form-floating">
+          <input class="form-control d-inline-block" placeholder="Leave a comment here" style="width: 100%;" id="msg">
+          <button type="submit" class="sendBtn">
+            <img src="send.png" width="40" alt="">
+          </button>
+      </form>
+
+      <label for="floatingTextarea">Message</label>
+    </div>
+  </div>
+  </div>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
